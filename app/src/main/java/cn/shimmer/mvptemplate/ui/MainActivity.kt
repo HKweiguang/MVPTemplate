@@ -7,14 +7,15 @@ import android.os.Bundle
 import android.widget.Toast
 import cn.shimmer.mvptemplate.R
 import cn.shimmer.mvptemplate.contract.MainContract
-import cn.shimmer.mvptemplate.model.form.UserFrom
+import cn.shimmer.mvptemplate.model.form.UserInfo
 import cn.shimmer.mvptemplate.presenter.MainPresenter
-import cn.shimmer.core.core.BaseMvpActivity
+import cn.shimmer.appcore.core.BaseMvpActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
 
-    override fun loginSuccess(it: UserFrom) {
-
+    override fun loginSuccess(it: UserInfo) {
+        text.text = it.name
     }
 
     override fun setLayout() = R.layout.activity_main
@@ -23,7 +24,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
         mPresenter = MainPresenter()
         mPresenter.attachView(this)
 
-        showLoading()
+        mPresenter.login(name = "test", password = "test")
     }
 
     override fun onBackPressed() {

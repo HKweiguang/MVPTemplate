@@ -1,4 +1,4 @@
-package cn.shimmer.core.core;
+package cn.shimmer.appcore.core;
 
 public interface BaseView {
 

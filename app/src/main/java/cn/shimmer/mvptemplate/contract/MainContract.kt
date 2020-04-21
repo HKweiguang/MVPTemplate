@@ -1,15 +1,17 @@
 package cn.shimmer.mvptemplate.contract
 
-import cn.shimmer.mvptemplate.model.form.UserFrom
-import cn.shimmer.core.core.BaseView
+import cn.shimmer.appcore.core.BaseModel
+import cn.shimmer.appcore.core.BasePresenter
+import cn.shimmer.mvptemplate.model.form.UserInfo
+import cn.shimmer.appcore.core.BaseView
 
 interface MainContract {
 
+    interface Model : BaseModel
+
     interface View : BaseView {
-        fun loginSuccess(it: UserFrom)
+        fun loginSuccess(it: UserInfo)
     }
 
-    interface Presenter {
-        fun login(name: String, password: String)
-    }
+    interface Presenter
 }

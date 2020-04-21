@@ -1,4 +1,4 @@
-package cn.shimmer.core.model.callback;
+package cn.shimmer.appcore.model.callback;
 
 public interface OnFailCallBack {
 
