@@ -14,7 +14,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

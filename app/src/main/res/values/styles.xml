@@ -9,7 +9,15 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/transparent</item>
         <item name="colorPrimaryDark">@color/transparent</item>
-        <item name="android:windowBackground">@mipmap/launch_jb</item>
+        <!-- 全局背景 -->
+        <item name="android:windowBackground">@drawable/launcher_bg</item>
+    </style>
+
+    <style name="AppActivityTheme" parent="AppBaseTheme">
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowBackground">@color/grey_100</item>
     </style>
 
 </resources>
