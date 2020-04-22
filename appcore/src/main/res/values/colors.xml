@@ -7,4 +7,16 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="grey_100">#F5F5F5</color>
+
+    <color name="grey_200">#eee</color>
+
+    <color name="grey_300">#E0E0E0</color>
+
+    <color name="grey_500">#9E9E9E</color>
+
+    <color name="red_500">#f44336</color>
+
+    <color name="red_700">#D32F2F</color>
+
+    <color name="red_red">#c60202</color>
 </resources>

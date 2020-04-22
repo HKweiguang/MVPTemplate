@@ -4,10 +4,10 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import cn.shimmer.mvptemplate.core.BaseMvpActivity
+import cn.shimmer.appcore.utils.ToastUtil
 import cn.shimmer.mvptemplate.R
 import cn.shimmer.mvptemplate.contract.MainContract
+import cn.shimmer.mvptemplate.core.BaseMvpActivity
 import cn.shimmer.mvptemplate.model.form.UserInfo
 import cn.shimmer.mvptemplate.presenter.MainPresenter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -38,8 +38,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
             }
             show()
         }
-        Toast.makeText(this, "111", Toast.LENGTH_SHORT).show()
-
+        ToastUtil.showShort("111")
     }
 
     /**

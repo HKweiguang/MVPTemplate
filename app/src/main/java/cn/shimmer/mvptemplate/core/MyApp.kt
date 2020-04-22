@@ -26,7 +26,7 @@ class MyApp : BaseApp() {
 
     private fun initDagger() {
         netComponent =
-            DaggerNetComponent.builder().apiModel(ApiModel()).coreComponent(component).build()
+            DaggerNetComponent.builder().apiModel(ApiModel()).coreComponent(coreComponent).build()
         netComponent.inject(this)
         api = netComponent.httpApi()
     }
