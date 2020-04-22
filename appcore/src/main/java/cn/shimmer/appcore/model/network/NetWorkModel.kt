@@ -1,8 +1,6 @@
 package cn.shimmer.appcore.model.network
 
 import cn.shimmer.appcore.core.BaseApp
-import cn.shimmer.appcore.model.network.BigDecimalAdapter
-import cn.shimmer.appcore.model.network.RetrofitInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -13,12 +11,14 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 class NetWorkModel() {
 
     @Provides
-    fun ofMoshi(): Moshi {
+    @Singleton
+    fun provideMoshi(): Moshi {
         return Moshi.Builder()
             // Add any other JsonAdapter factories.
             .add(BigDecimalAdapter)
@@ -27,16 +27,19 @@ class NetWorkModel() {
     }
 
     @Provides
-    fun ofMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory {
+    @Singleton
+    fun provideMoshiConverterFactory(moshi: Moshi): MoshiConverterFactory {
         return MoshiConverterFactory.create(moshi)
     }
 
     @Provides
-    fun ofOkHttpCache(): Cache =
+    @Singleton
+    fun provideOkHttpCache(): Cache =
         Cache(BaseApp.instance.cacheDir, 10 * 1024 * 1024)
 
     @Provides
-    fun ofOkHttpClient(cache: Cache): OkHttpClient {
+    @Singleton
+    fun provideOkHttpClient(cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(
                 RetrofitInterceptor(
@@ -56,7 +59,8 @@ class NetWorkModel() {
     }
 
     @Provides
-    fun ofRetrofit(okHttpClient: OkHttpClient, factory: MoshiConverterFactory): Retrofit {
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient, factory: MoshiConverterFactory): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://127.0.0.1")
             .client(okHttpClient)

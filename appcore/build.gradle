@@ -43,8 +43,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    api 'com.google.dagger:dagger:2.27'
-    kapt 'com.google.dagger:dagger-compiler:2.27'
+    api 'com.google.dagger:dagger:2.13'
+    kapt 'com.google.dagger:dagger-compiler:2.13'
 
     api 'com.squareup.moshi:moshi:1.9.2'
     api 'com.squareup.moshi:moshi-kotlin:1.9.2'

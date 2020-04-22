@@ -5,11 +5,11 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import cn.shimmer.mvptemplate.core.BaseMvpActivity
 import cn.shimmer.mvptemplate.R
 import cn.shimmer.mvptemplate.contract.MainContract
 import cn.shimmer.mvptemplate.model.form.UserInfo
 import cn.shimmer.mvptemplate.presenter.MainPresenter
-import cn.shimmer.appcore.core.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
@@ -30,11 +30,11 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
     override fun onBackPressed() {
         AlertDialog.Builder(this).run {
             setMessage("点击确定退出")
-            setPositiveButton("确定"){
-                dialog, which ->  super.onBackPressed()
+            setPositiveButton("确定") { dialog, which ->
+//                super.onBackPressed()
+                ActivityCollector.finishAll()
             }
-            setNegativeButton("取消") {
-                dialog, which ->
+            setNegativeButton("取消") { dialog, which ->
             }
             show()
         }

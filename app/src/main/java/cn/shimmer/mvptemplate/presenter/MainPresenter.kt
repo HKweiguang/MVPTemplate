@@ -9,7 +9,7 @@ import cn.shimmer.mvptemplate.model.MainModel
 
 class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter {
 
-    private val mainModel = MainModel(MyApp.netComponent.httpApi())
+    private val mainModel = MainModel(MyApp.api)
 
     fun login(name: String, password: String) {
         mainModel.getUserInfo(name,

@@ -1,8 +1,12 @@
-package cn.shimmer.appcore.core;
+package cn.shimmer.mvptemplate.core;
 
 import android.os.Bundle;
 
 import org.jetbrains.annotations.Nullable;
+
+import cn.shimmer.appcore.core.BaseActivity;
+import cn.shimmer.appcore.core.BasePresenter;
+import cn.shimmer.appcore.core.BaseView;
 
 public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity implements BaseView {
 

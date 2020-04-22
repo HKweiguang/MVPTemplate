@@ -3,6 +3,7 @@ package cn.shimmer.appcore.core
 import android.app.Application
 import cn.shimmer.appcore.component.CoreComponent
 import cn.shimmer.appcore.component.DaggerCoreComponent
+import cn.shimmer.appcore.model.ApplicationModule
 import cn.shimmer.appcore.model.network.NetWorkModel
 
 open class BaseApp : Application() {
@@ -23,6 +24,10 @@ open class BaseApp : Application() {
     }
 
     private fun initDagger() {
-        component = DaggerCoreComponent.builder().netWorkModel(NetWorkModel()).build()
+        component = DaggerCoreComponent.builder().applicationModule(
+            ApplicationModule(
+                this
+            )
+        ).build()
     }
 }

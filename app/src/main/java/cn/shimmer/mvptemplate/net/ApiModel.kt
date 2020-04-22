@@ -3,13 +3,14 @@ package cn.shimmer.mvptemplate.net
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import javax.inject.Singleton
 
-//@Singleton
 @Module
 class ApiModel {
 
     @Provides
-    fun ofRetrofit(retrofit: Retrofit): HttpApi {
+    fun provideHttpApi(retrofit: Retrofit): HttpApi {
+        println(retrofit)
         return retrofit.create(HttpApi::class.java)
     }
 }
