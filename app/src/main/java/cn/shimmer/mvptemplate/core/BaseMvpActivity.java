@@ -6,9 +6,8 @@ import org.jetbrains.annotations.Nullable;
 
 import cn.shimmer.appcore.core.BaseActivity;
 import cn.shimmer.appcore.core.BasePresenter;
-import cn.shimmer.appcore.core.BaseView;
 
-public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity implements BaseView {
+public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity {
 
     protected P mPresenter;
 

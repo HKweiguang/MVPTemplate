@@ -10,7 +10,6 @@ class ApiModel {
 
     @Provides
     fun provideHttpApi(retrofit: Retrofit): HttpApi {
-        println(retrofit)
         return retrofit.create(HttpApi::class.java)
     }
 }

@@ -1,6 +1,7 @@
 package cn.shimmer.appcore.model.network
 
-import cn.shimmer.appcore.core.BaseApp
+import android.app.Application
+import cn.shimmer.appcore.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -34,16 +35,16 @@ class NetWorkModel() {
 
     @Provides
     @Singleton
-    fun provideOkHttpCache(): Cache =
-        Cache(BaseApp.instance.cacheDir, 10 * 1024 * 1024)
+    fun provideOkHttpCache(content: Application): Cache =
+        Cache(content.cacheDir, 10 * 1024 * 1024)
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(cache: Cache): OkHttpClient {
+    fun provideOkHttpClient(content: Application, cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(
                 RetrofitInterceptor(
-                    BaseApp.instance
+                    content
                 )
             )
             .addInterceptor(
@@ -62,7 +63,7 @@ class NetWorkModel() {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient, factory: MoshiConverterFactory): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://127.0.0.1")
+            .baseUrl(BuildConfig.HTTP_URL)
             .client(okHttpClient)
             .addConverterFactory(factory)
             .build()

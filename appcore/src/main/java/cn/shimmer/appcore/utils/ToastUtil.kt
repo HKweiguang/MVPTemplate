@@ -36,7 +36,7 @@ object ToastUtil {
     private var sLayoutId = -1
     private var gravity = Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM
     private var xOffset = 0
-    private var yOffset = BaseApp.instance.dp2px(64f)
+    private var yOffset = BaseApp.getInstance().dp2px(64f)
     private var bgColor = COLOR_BG_DEFAULT
     private var bgResource = -1
     private var msgColor = COLOR_DEFAULT
@@ -190,11 +190,11 @@ object ToastUtil {
     }
 
     private fun show(@StringRes resId: Int, duration: Int) {
-        show(BaseApp.instance.resources.getText(resId).toString(), duration)
+        show(BaseApp.getInstance().resources.getText(resId).toString(), duration)
     }
 
     private fun show(@StringRes resId: Int, duration: Int, vararg args: Any) {
-        show(String.format(BaseApp.instance.resources.getString(resId), args), duration)
+        show(String.format(BaseApp.getInstance().resources.getString(resId), args), duration)
     }
 
     private fun show(format: String, duration: Int, vararg args: Any) {
@@ -204,7 +204,7 @@ object ToastUtil {
     private fun showed(text: CharSequence, duration: Int) {
         HANDLER.post {
             cancel()
-            sToast = Toast.makeText(BaseApp.instance, text, duration)
+            sToast = Toast.makeText(BaseApp.getInstance(), text, duration)
             // solve the font of toast
             val tvMessage = sToast!!.view.findViewById<View>(android.R.id.message) as TextView
             TextViewCompat.setTextAppearance(tvMessage, android.R.style.TextAppearance)
@@ -217,7 +217,7 @@ object ToastUtil {
     private fun showed(view: View, duration: Int) {
         HANDLER.post {
             cancel()
-            sToast = Toast(BaseApp.instance)
+            sToast = Toast(BaseApp.getInstance())
             sToast!!.view = view
             sToast!!.duration = duration
             setBgAndGravity()
@@ -246,7 +246,7 @@ object ToastUtil {
             }
         }
         val inflate =
-            BaseApp.instance.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            BaseApp.getInstance().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val toastView = inflate.inflate(layoutId, null)
         sViewWeakReference = WeakReference(toastView)
         sLayoutId = layoutId

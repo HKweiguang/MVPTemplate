@@ -9,6 +9,7 @@ import cn.shimmer.appcore.utils.ToastUtil
 import cn.shimmer.appcore.exception.ExceptionCode
 import cn.shimmer.appcore.exception.QuitException
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import java.io.IOException
 
 class RetrofitInterceptor(var context: Context) : Interceptor {
@@ -18,7 +19,7 @@ class RetrofitInterceptor(var context: Context) : Interceptor {
     }
 
     @Throws(IOException::class)
-    override fun intercept(chain: Interceptor.Chain): Response? {
+    override fun intercept(chain: Interceptor.Chain): Response {
 
 
         if (!NetWorkUtil.isNetworkConnected(context)) {
@@ -40,7 +41,7 @@ class RetrofitInterceptor(var context: Context) : Interceptor {
 
 
 
-        when (response.code()) {
+        when (response.code) {
             401 -> {
                 throw QuitException(
                     ExceptionCode.ACCESS_EXCEPTION.message,
@@ -67,7 +68,7 @@ class RetrofitInterceptor(var context: Context) : Interceptor {
         val base64BearerToken =
             "Basic " + Base64.encodeToString(bearerToken.toByteArray(), Base64.NO_WRAP)
         val requestBody = RequestBody.create(
-            MediaType.parse("application/x-www-form-urlencoded; charset=UTF-8"),
+            "application/x-www-form-urlencoded; charset=UTF-8".toMediaTypeOrNull(),
             "grant_type=client_credentials"
         )
 
@@ -76,7 +77,7 @@ class RetrofitInterceptor(var context: Context) : Interceptor {
             .post(requestBody)
             .header("Authorization", base64BearerToken)
             .header("Content-Encoding", "gzip")
-            .header("User-Agent", "horsttop")
+            .header("User-Agent", "shimmer")
             .header("Content-type", "application/x-www-form-urlencoded;charset=UTF-8")
             .build()
     }

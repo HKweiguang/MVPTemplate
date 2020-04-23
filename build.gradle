@@ -22,9 +22,18 @@ ext {
     minSdkVersion = 21
     targetSdkVersion = 29
 
+    // 测试连接地址
+    httpUrl = '"http://api.m.mtime.cn"'
+//    httpUrl = '"http://127.0.0.1"'
+
+    appcompat = '1.1.0'
+    recyclerview = '1.1.0'
+    cardview = '1.0.0'
     dagger = '2.27'
     moshi = '1.9.2'
-    retrofit = '2.7.2'
+    retrofit = '2.8.1'
+    eventbus = '3.1.1'
+    timber = '4.7.1'
 }
 
 allprojects {

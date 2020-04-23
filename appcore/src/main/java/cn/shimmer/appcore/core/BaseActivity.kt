@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Process
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +23,10 @@ abstract class BaseActivity : AppCompatActivity() {
         ActivityCollector.removeActivity(
             this
         )
+        // 取消 evenbus注册
+        if (BaseApp.bus.isRegistered(this)) {
+            BaseApp.bus.unregister(this)
+        }
     }
 
     /**
