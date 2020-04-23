@@ -9,15 +9,26 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/transparent</item>
         <item name="colorPrimaryDark">@color/transparent</item>
+        <item name="colorAccent">@color/grey_100</item>
         <!-- 全局背景 -->
         <item name="android:windowBackground">@drawable/launcher_bg</item>
     </style>
 
     <style name="AppActivityTheme" parent="AppBaseTheme">
-        <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowBackground">@color/grey_100</item>
+        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="SplashActivityTheme" parent="AppBaseTheme">
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <!-- 去除状态栏 -->
+        <item name="android:windowFullscreen">?android:windowNoTitle</item>
+        <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
 </resources>

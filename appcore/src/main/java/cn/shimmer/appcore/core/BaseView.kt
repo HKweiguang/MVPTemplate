@@ -1,14 +1,20 @@
 package cn.shimmer.appcore.core
 
+import cn.shimmer.appcore.ui.LoadingLayout
+
 interface BaseView {
+    /**
+     * 加载页面
+     */
+    fun LoadLayout(loadingLayout: LoadingLayout)
     /**
      * 显示加载中
      */
-    //    void showLoading(res: Integer);
+    fun startLoading()
     /**
      * 隐藏加载
      */
-    fun hideLoading()
+    fun finishLoading()
 
     /**
      * 数据获取失败

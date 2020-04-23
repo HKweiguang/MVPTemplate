@@ -1,16 +1,15 @@
 package cn.shimmer.mvptemplate.contract
 
 import cn.shimmer.appcore.core.BaseModel
-import cn.shimmer.appcore.core.BasePresenter
-import cn.shimmer.mvptemplate.model.form.UserInfo
 import cn.shimmer.appcore.core.BaseView
+import cn.shimmer.mvptemplate.bean.Moves
 
 interface MainContract {
 
     interface Model : BaseModel
 
     interface View : BaseView {
-        fun loginSuccess(it: UserInfo)
+        fun getMovesSuccess(it: Moves)
     }
 
     interface Presenter

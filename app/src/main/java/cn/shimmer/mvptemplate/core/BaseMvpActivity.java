@@ -2,12 +2,16 @@ package cn.shimmer.mvptemplate.core;
 
 import android.os.Bundle;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import cn.shimmer.appcore.core.BaseActivity;
 import cn.shimmer.appcore.core.BasePresenter;
+import cn.shimmer.appcore.ui.LoadingLayout;
 
 public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity {
+
+    private LoadingLayout loadingLayout;
 
     protected P mPresenter;
 
@@ -25,17 +29,22 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
     }
 
     @Override
-    public void showLoading() {
-
+    public void LoadLayout(@NotNull LoadingLayout loadingLayout) {
+        this.loadingLayout = loadingLayout;
     }
 
     @Override
-    public void hideLoading() {
+    public void startLoading() {
+        loadingLayout.startLoading();
+    }
 
+    @Override
+    public void finishLoading() {
+        loadingLayout.completeLoading();
     }
 
     @Override
     public void onError() {
-
+        loadingLayout.loadingFail();
     }
 }
