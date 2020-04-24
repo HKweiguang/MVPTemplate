@@ -8,5 +8,6 @@ class LauncherActiviy : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MainActivity.actionStart(this)
+        finish()
     }
 }

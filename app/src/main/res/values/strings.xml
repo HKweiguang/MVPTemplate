@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVPTemplate</string>
+    <string name="move_item_title">电影名称：</string>
+    <string name="move_item_time">电影时长：</string>
 </resources>

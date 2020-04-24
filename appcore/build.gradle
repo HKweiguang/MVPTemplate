@@ -57,7 +57,9 @@ dependencies {
     // retrofit
     api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
     api "com.squareup.retrofit2:converter-moshi:$rootProject.ext.retrofit"
-    api 'com.squareup.okhttp3:logging-interceptor:4.5.0'
+    // okhttp
+    api "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp"
+    api "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp"
     // timber
     api "com.jakewharton.timber:timber:$rootProject.ext.timber"
     // eventbus

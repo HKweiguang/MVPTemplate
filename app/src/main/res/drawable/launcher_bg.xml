@@ -2,6 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item>
-        <bitmap android:src="@drawable/win_bg" android:gravity="fill"/>
+        <bitmap android:src="@mipmap/win_bg" android:gravity="fill"/>
     </item>
 </layer-list>

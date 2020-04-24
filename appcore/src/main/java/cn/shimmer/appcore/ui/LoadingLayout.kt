@@ -1,14 +1,24 @@
 package cn.shimmer.appcore.ui
 
 import android.content.Context
+import android.os.Handler
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import cn.shimmer.appcore.R
+import cn.shimmer.appcore.utils.TimerUtils
 
 class LoadingLayout constructor(context: Context) : FrameLayout(context) {
+
+    private var mHandler = Handler { msg ->
+        when (msg.what) {
+            0 -> mRlLoadingView.visibility = View.GONE
+        }
+        false
+    }
 
     private lateinit var mRlLoadingView: RelativeLayout
     private lateinit var tv_loading: TextView
@@ -32,12 +42,14 @@ class LoadingLayout constructor(context: Context) : FrameLayout(context) {
     fun startLoading() {
         tv_loading.text = "正在加载中..."
         mRlLoadingView.visibility = View.VISIBLE
-
     }
 
     fun completeLoading() {
         tv_loading.text = "加载完成!"
-        mRlLoadingView.visibility = View.GONE
+
+        TimerUtils.run(500) {
+            mHandler.sendEmptyMessage(0)
+        }
     }
 
     fun loadingFail() {

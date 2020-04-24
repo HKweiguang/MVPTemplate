@@ -6,18 +6,23 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import cn.shimmer.appcore.utils.ToastUtil
 import cn.shimmer.mvptemplate.R
 import cn.shimmer.mvptemplate.bean.Moves
+import cn.shimmer.mvptemplate.bean.Trailers
 import cn.shimmer.mvptemplate.contract.MainContract
 import cn.shimmer.mvptemplate.core.BaseMvpActivity
 import cn.shimmer.mvptemplate.presenter.MainPresenter
+import cn.shimmer.mvptemplate.ui.adapter.MainMovesAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
 
     override fun getMovesSuccess(it: Moves) {
-        // 模拟网络延迟
-        Thread.sleep(2000)
+        trailers.clear()
+        trailers.addAll(it.trailers)
+        movesAdapter.notifyDataSetChanged()
 
         /**
          * 网络访问后使用，关闭通用加载页面
@@ -33,9 +38,18 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
 
     override fun setLayoutRes() = R.layout.activity_main
 
+    private lateinit var movesAdapter: MainMovesAdapter
+    private val trailers = mutableListOf<Trailers>()
+
     override fun init() {
         mPresenter = MainPresenter()
         mPresenter.attachView(this)
+
+        main_recycler.layoutManager =
+            StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        movesAdapter = MainMovesAdapter(trailers)
+        main_recycler.adapter = movesAdapter
+
         mPresenter.getMoves()
 
         /**
