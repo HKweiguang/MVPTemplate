@@ -49,24 +49,24 @@ dependencies {
     // cardview
     implementation "androidx.cardview:cardview:$rootProject.ext.cardview"
     // dagger
-    api "com.google.dagger:dagger:$rootProject.ext.dagger"
+    implementation "com.google.dagger:dagger:$rootProject.ext.dagger"
     kapt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
     // moshi
-    api "com.squareup.moshi:moshi:$rootProject.ext.moshi"
-    api "com.squareup.moshi:moshi-kotlin:$rootProject.ext.moshi"
+    implementation "com.squareup.moshi:moshi:$rootProject.ext.moshi"
+    implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.moshi"
     // retrofit
-    api "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
-    api "com.squareup.retrofit2:converter-moshi:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$rootProject.ext.retrofit"
     // okhttp
-    api "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp"
-    api "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp"
     // timber
-    api "com.jakewharton.timber:timber:$rootProject.ext.timber"
+    implementation "com.jakewharton.timber:timber:$rootProject.ext.timber"
     // eventbus
-    api "org.greenrobot:eventbus:$rootProject.ext.eventbus"
+    implementation "org.greenrobot:eventbus:$rootProject.ext.eventbus"
     // glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
 
     api project(path: ':appcore')
 }

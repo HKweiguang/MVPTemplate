@@ -2,7 +2,6 @@ package cn.shimmer.appcore.ui
 
 import android.content.Context
 import android.os.Handler
-import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -47,7 +46,7 @@ class LoadingLayout constructor(context: Context) : FrameLayout(context) {
     fun completeLoading() {
         tv_loading.text = "加载完成!"
 
-        TimerUtils.run(500) {
+        TimerUtils.run(888) {
             mHandler.sendEmptyMessage(0)
         }
     }

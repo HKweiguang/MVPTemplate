@@ -6,10 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import cn.shimmer.appcore.core.BaseApp
+import cn.shimmer.appcore.utils.GlideUtil
 import cn.shimmer.mvptemplate.R
 import cn.shimmer.mvptemplate.bean.Trailers
-import com.bumptech.glide.Glide
 
 class MainMovesAdapter(private val trailers: MutableList<Trailers>) :
     RecyclerView.Adapter<MainMovesAdapter.ViewHolder>() {
@@ -32,8 +31,8 @@ class MainMovesAdapter(private val trailers: MutableList<Trailers>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val bean = trailers[position]
-        Glide.with(BaseApp.getInstance()).load(bean.coverImg).error(cn.shimmer.appcore.R.mipmap.empty).into(holder.moves_item_img)
+        GlideUtil.loadingImage(bean.coverImg, holder.moves_item_img)
         holder.moves_item_title.text = "电影名称：${bean.movieName}"
-        holder.moves_item_time.text = "电影时长：${bean.videoLength}"
+        holder.moves_item_time.text = "电影时长：${bean.videoLength}分钟"
     }
 }

@@ -35,6 +35,7 @@ ext {
     okhttp = '4.5.0'
     eventbus = '3.1.1'
     timber = '4.7.1'
+    glide = '4.11.0'
 }
 
 allprojects {

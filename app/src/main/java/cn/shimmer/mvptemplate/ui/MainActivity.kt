@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import cn.shimmer.appcore.utils.GlideUtil
 import cn.shimmer.appcore.utils.ToastUtil
 import cn.shimmer.mvptemplate.R
 import cn.shimmer.mvptemplate.bean.Moves
@@ -44,9 +45,9 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
     override fun init() {
         mPresenter = MainPresenter()
         mPresenter.attachView(this)
+        val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
-        main_recycler.layoutManager =
-            StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
+        main_recycler.layoutManager = layoutManager
         movesAdapter = MainMovesAdapter(trailers)
         main_recycler.adapter = movesAdapter
 
@@ -56,6 +57,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
          * 网络访问前使用，显示通用加载页面
          */
         startLoading()
+        GlideUtil.getInstance()
     }
 
     override fun onBackPressed() {

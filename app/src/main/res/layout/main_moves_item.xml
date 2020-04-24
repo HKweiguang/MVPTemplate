@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
+    android:minHeight="120dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/grey_100">
 
@@ -71,4 +72,4 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+</LinearLayout>
