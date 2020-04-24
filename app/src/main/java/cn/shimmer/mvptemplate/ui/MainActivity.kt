@@ -6,8 +6,8 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import cn.shimmer.appcore.utils.GlideUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import cn.shimmer.appcore.utils.GlideUtils
 import cn.shimmer.appcore.utils.ToastUtil
 import cn.shimmer.mvptemplate.R
 import cn.shimmer.mvptemplate.bean.Moves
@@ -31,11 +31,7 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
         finishLoading()
     }
 
-    override fun setSystemStatusBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        }
-    }
+    override fun isStatusLight() = true
 
     override fun setLayoutRes() = R.layout.activity_main
 
@@ -43,11 +39,14 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
     private val trailers = mutableListOf<Trailers>()
 
     override fun init() {
+        initView()
+
         mPresenter = MainPresenter()
         mPresenter.attachView(this)
-        val layoutManager = StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL)
 
-        main_recycler.layoutManager = layoutManager
+        main_recycler.layoutManager = LinearLayoutManager(this).apply {
+            orientation = LinearLayoutManager.VERTICAL
+        }
         movesAdapter = MainMovesAdapter(trailers)
         main_recycler.adapter = movesAdapter
 
@@ -57,7 +56,12 @@ class MainActivity : BaseMvpActivity<MainPresenter>(), MainContract.View {
          * 网络访问前使用，显示通用加载页面
          */
         startLoading()
-        GlideUtil.getInstance()
+        GlideUtils.getInstance()
+    }
+
+    private fun initView() {
+        toolbar.layoutParams.height += barHeight
+        toolbar.setPadding(0, barHeight, 0, 0)
     }
 
     override fun onBackPressed() {

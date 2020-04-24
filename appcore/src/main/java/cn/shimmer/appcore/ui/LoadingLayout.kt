@@ -46,7 +46,7 @@ class LoadingLayout constructor(context: Context) : FrameLayout(context) {
     fun completeLoading() {
         tv_loading.text = "加载完成!"
 
-        TimerUtils.run(888) {
+        TimerUtils.run(666) {
             mHandler.sendEmptyMessage(0)
         }
     }

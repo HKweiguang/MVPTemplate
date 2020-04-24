@@ -17,6 +17,7 @@ class MainPresenter : BasePresenter<MainContract.View>(), MainContract.Presenter
             OnSuccessCallBack {
                 mView.getMovesSuccess(it)
             }, OnFailCallBack {
+                mView.onError()
                 ToastUtil.showShort(it.message!!)
                 it.printStackTrace()
             }

@@ -2,6 +2,7 @@ package cn.shimmer.appcore.core
 
 import android.app.Activity
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Process
 import android.view.View
@@ -14,7 +15,6 @@ abstract class BaseActivity() : AppCompatActivity(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSystemStatusBar()
-        window.statusBarColor = Color.TRANSPARENT
         setContentView(setLayoutView())
         ActivityCollector.addActivity(
             this
@@ -37,7 +37,20 @@ abstract class BaseActivity() : AppCompatActivity(), BaseView {
     /**
      * 设置状态栏字体
      */
-    abstract fun setSystemStatusBar()
+    abstract fun isStatusLight(): Boolean
+
+    /**
+     * 设置状态栏
+     */
+    private fun setSystemStatusBar() {
+        getStatusBarHeight()
+        if (isStatusLight()) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            }
+        }
+        window.statusBarColor = Color.TRANSPARENT
+    }
 
     /**
      * 设置 layout 视图
@@ -48,6 +61,19 @@ abstract class BaseActivity() : AppCompatActivity(), BaseView {
         val loadingLayout = LoadingLayout(this, setLayoutRes())
         LoadLayout(loadingLayout)
         return loadingLayout
+    }
+
+    var barHeight = 0
+
+    /**
+     * 获取状态栏高度
+     */
+    private fun getStatusBarHeight(): Int {
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            barHeight = resources.getDimensionPixelOffset(resourceId)
+        }
+        return barHeight
     }
 
     /**

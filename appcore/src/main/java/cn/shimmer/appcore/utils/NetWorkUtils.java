@@ -22,7 +22,7 @@ import android.telephony.TelephonyManager;
  * EHRPD : 3G CDMA2000向LTE 4G的中间产物 Evolved High Rate Packet Data HRPD的升级
  * HSPAP : 3G HSPAP 比 HSDPA 快些
  */
-public class NetWorkUtil {
+public class NetWorkUtils {
     public enum NetType {
         NETWORK_UNKNOWN, NETWORK_WIFI, NETWORK_3_G, NETWORK_4_G, NETWORK_2_G
     }

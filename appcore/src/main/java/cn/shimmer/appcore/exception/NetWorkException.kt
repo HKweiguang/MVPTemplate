@@ -1,6 +1,6 @@
 package cn.shimmer.appcore.exception
 
-class QuitException(message: String, var code: Int = 0) : RuntimeException(message)
+class NetWorkException(message: String, var code: Int = 0) : RuntimeException(message)
 
 enum class ExceptionCode(var message: String, var code: Int = 0) {
 

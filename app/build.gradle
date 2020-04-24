@@ -28,7 +28,7 @@ android {
         targetCompatibility = "1.8"
     }
 
-    lintOptions{
+    lintOptions {
         disable 'ExtraTranslation'
     }
 
@@ -51,22 +51,33 @@ dependencies {
     // dagger
     implementation "com.google.dagger:dagger:$rootProject.ext.dagger"
     kapt "com.google.dagger:dagger-compiler:$rootProject.ext.dagger"
+    // gson
+    implementation 'com.google.code.gson:gson:2.8.5'
     // moshi
     implementation "com.squareup.moshi:moshi:$rootProject.ext.moshi"
     implementation "com.squareup.moshi:moshi-kotlin:$rootProject.ext.moshi"
+    // rxjava
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.retrofit"
     // okhttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp"
+    // okio
+    implementation "com.squareup.okio:okio:$rootProject.ext.okio"
     // timber
     implementation "com.jakewharton.timber:timber:$rootProject.ext.timber"
     // eventbus
     implementation "org.greenrobot:eventbus:$rootProject.ext.eventbus"
     // glide
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glide"
-    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.ext.glide"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$rootProject.ext.glide"
+    implementation "com.github.bumptech.glide:recyclerview-integration:$rootProject.ext.glide"
 
     api project(path: ':appcore')
 }

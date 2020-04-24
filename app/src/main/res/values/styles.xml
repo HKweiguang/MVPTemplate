@@ -16,7 +16,8 @@
 
     <style name="AppActivityTheme" parent="AppBaseTheme">
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:fitsSystemWindows">false</item>
         <item name="android:windowBackground">@color/grey_100</item>
         <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -24,7 +25,8 @@
 
     <style name="SplashActivityTheme" parent="AppBaseTheme">
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:fitsSystemWindows">false</item>
         <!-- 去除状态栏 -->
         <item name="android:windowFullscreen">?android:windowNoTitle</item>
         <!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
